@@ -699,6 +699,133 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 24px 96px; }
 }
 
 /* ─── 打印 / 导出 PDF ─────────────────────────────────── */
+/* ─── 解读 ────────────────────────────────────────────── */
+.reading { margin-top: 40px; }
+
+.reading-head { margin-bottom: 16px; }
+.reading-title {
+  font-size: 18px;
+  font-weight: 650;
+  margin: 0 0 4px;
+  letter-spacing: -.01em;
+}
+.reading-sub { margin: 0; font-size: 13px; color: var(--muted); }
+
+.reading-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.read-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 20px 22px;
+}
+.read-card-wide { grid-column: 1 / -1; }
+
+.read-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.read-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+.read-tag {
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--soft);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
+.read-over {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-2);
+  text-align: justify;
+}
+
+.read-list {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.read-list li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+.read-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .72em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.read-advice {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--soft);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.read-advice-label {
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 650;
+  color: var(--accent);
+  letter-spacing: .06em;
+  padding-top: 2px;
+}
+.read-advice p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink-2);
+}
+
+.read-basis {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--muted-2);
+  line-height: 1.6;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-variant-numeric: tabular-nums;
+}
+
+.read-error { color: var(--accent); font-size: 13.5px; }
+
+@media (max-width: 860px) {
+  .reading-grid { grid-template-columns: 1fr; }
+  .read-card { padding: 16px 18px; }
+  .read-over { font-size: 13.5px; }
+  .read-list li { font-size: 13px; }
+}
+
+
 @media print {
   /* 纵向 A4：与你实测导出的效果一致 */
   @page { size: A4 portrait; margin: 12mm 10mm; }
