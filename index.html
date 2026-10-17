@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>大小王 · 紫微斗数排盘</title>
+<meta name="description" content="紫微斗数排盘。按《紫微斗数全书》校订星曜庙旺，含真太阳时校正、生年四化、大限流年与格局断法。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="大小王 · 紫微斗数排盘">
+<meta property="og:description" content="紫微斗数排盘。按《紫微斗数全书》校订星曜庙旺，含真太阳时校正、生年四化、大限流年与格局断法。">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css?v=mvchuzk9">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./" aria-label="大小王 紫微斗数">
+      <span class="brand-mark" aria-hidden="true">王</span>
+      <span class="brand-text">
+        <span class="brand-name">大小王</span>
+        <span class="brand-sub">紫微斗数</span>
+      </span>
+    </a>
+    <nav class="topnav">
+      <button type="button" class="nav-link is-active" data-scroll="app">排盘</button>
+      <button type="button" class="nav-link" data-scroll="about">关于</button>
+    </nav>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ─── 输入区 ─── -->
+  <section class="hero" id="form-section">
+    <h1 class="hero-title">紫微斗数排盘</h1>
+
+    <form class="card form-card" id="birth-form" novalidate>
+
+      <div class="field field-wide">
+        <div class="cal-switch" role="tablist" aria-label="历法">
+          <button type="button" class="cal-tab is-active" data-cal="solar" role="tab" aria-selected="true">公历</button>
+          <button type="button" class="cal-tab" data-cal="lunar" role="tab" aria-selected="false">农历</button>
+        </div>
+      </div>
+
+      <div class="field field-wide">
+        <label class="label">出生日期<span class="label-note">年 · 月 · 日</span></label>
+        <div class="date-row">
+          <button type="button" class="pick" id="pick-year" aria-label="选年"></button>
+          <button type="button" class="pick" id="pick-month" aria-label="选月"></button>
+          <button type="button" class="pick" id="pick-day" aria-label="选日"></button>
+        </div>
+        <p class="date-hint" id="date-hint"></p>
+      </div>
+
+      <div class="field">
+        <label class="label">出生时辰<span class="label-note">当地钟表</span></label>
+        <button type="button" class="pick pick-wide" id="pick-hour" aria-label="选时辰"></button>
+        <button type="button" class="link-btn" id="btn-exact">不知道具体时间？按时辰选即可 · 精确到分</button>
+        <input class="input" type="time" id="birth-time" value="08:00" hidden>
+      </div>
+
+      <div class="field">
+        <span class="label">性别</span>
+        <div class="slider" id="gender-slider" role="radiogroup" aria-label="性别">
+          <span class="slider-thumb" aria-hidden="true"></span>
+          <button type="button" class="slider-opt is-on" data-gender="male" role="radio" aria-checked="true">男</button>
+          <button type="button" class="slider-opt" data-gender="female" role="radio" aria-checked="false">女</button>
+        </div>
+        <label class="check">
+          <input type="checkbox" id="unknown-time">
+          <span>时辰不详</span>
+        </label>
+      </div>
+
+      <div class="field field-wide">
+        <label class="label">出生地<span class="label-note">用于真太阳时校正</span></label>
+        <button type="button" class="pick" id="pick-city" aria-label="选出生地"></button>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">起盘</button>
+        <button class="btn btn-ghost" type="button" id="btn-reset" hidden>重新填写</button>
+      </div>
+      <p class="form-error" id="form-error" hidden></p>
+    </form>
+  </section>
+
+  <!-- ─── 结果区 ─── -->
+  <section class="result" id="result" hidden>
+
+    <div class="result-head">
+      <div class="result-title">
+        <h2 id="chart-name">命盘</h2>
+        <p class="result-meta" id="chart-meta"></p>
+      </div>
+      <div class="result-actions">
+        <button class="btn btn-ghost btn-sm" type="button" id="btn-toggle-stars">隐藏杂曜</button>
+        <button class="btn btn-ghost btn-sm" type="button" id="btn-print">导出 PDF</button>
+        <button class="btn btn-ghost btn-sm" type="button" id="btn-new">改信息</button>
+      </div>
+    </div>
+
+    <div class="board-wrap">
+      <div class="board" id="board" aria-label="紫微斗数十二宫命盘"></div>
+    </div>
+
+    <div class="palace-detail" id="palace-detail" hidden></div>
+
+    <div class="grid-2">
+      <div class="card panel">
+        <h3 class="panel-title">基本信息</h3>
+        <dl class="kv" id="facts"></dl>
+        <h3 class="panel-title panel-title-gap">时辰推算</h3>
+        <div id="solar-trace"></div>
+      </div>
+      <div class="card panel">
+        <h3 class="panel-title">生年四化<small id="sihua-stem"></small></h3>
+        <div class="sihua-row" id="sihua-row"></div>
+        <div class="sihua-detail" id="sihua-detail" hidden></div>
+        <h3 class="panel-title panel-title-gap">命宫格局</h3>
+        <div class="patterns" id="patterns"></div>
+      </div>
+    </div>
+
+    <div class="card panel panel-wide">
+      <h3 class="panel-title">大限<small>点击查看该步大限</small></h3>
+      <div class="daxian-row" id="daxian-row"></div>
+      <div class="daxian-detail" id="daxian-detail"></div>
+    </div>
+
+    <section class="reading" id="reading">
+      <div class="reading-head">
+        <h2 class="reading-title">解读</h2>
+        <p class="reading-sub">按十二宫逐宫推演，每条论断下标出所依之星与宫</p>
+      </div>
+      <div class="reading-grid" id="reading-grid"></div>
+    </section>
+
+  </section>
+
+  <!-- ─── 关于 ─── -->
+  <section class="about" id="about">
+    <h2 class="about-title">断法</h2>
+
+    <h3 class="about-h">一、以命宫为轴</h3>
+    <p class="about-text">
+      紫微斗数以命宫定一生基调，三方四正（命宫、财帛、官禄、迁移）为骨架。
+      星有十四主星，分紫微、天府两系，各主一事：紫微主贵、天府主藏、武曲主财、天机主谋、太阳主名、太阴主蓄。
+      同宫之星互为表里，庙旺则显其长，落陷则见其短。
+    </p>
+
+    <h3 class="about-h">二、看宫不论星</h3>
+    <p class="about-text">
+      同一颗星入不同宫，所论之事全不相同。七杀在官禄为开疆，在夫妻则为聚散。
+      故断命先定宫，再论星，最后才落到具体事情上。
+      空宫无主星者，借对宫之星来论，力量减一等。
+    </p>
+
+    <h3 class="about-h">三、四化为纲</h3>
+    <p class="about-text">
+      生年干化出禄、权、科、忌四星，落于何宫，该宫之事便有起伏。
+      化禄主顺遂与得，化权主掌控与劳，化科主名与贵人，化忌主执着与亏欠。
+      禄忌同宫者，得而复失；权科会照者，名位俱来。
+    </p>
+
+    <h3 class="about-h">四、格局定骨</h3>
+    <p class="about-text">
+      星曜组合成格者，一生有固定走势，格局之成败重于单星之吉凶。
+      本盘所据格局出自《紫微斗数全书》《全集》与《骨髓赋》，
+      每一格分必须、加分、破格三层，破格者纵有成格亦打折。
+    </p>
+
+    <h3 class="about-h">五、疾厄双看</h3>
+    <p class="about-text">
+      古法看疾厄宫主星定病位。倪海厦《天纪》另有一法：
+      不论星之五行，取全盘杀星最集中那一宫，按该宫地支定脏腑
+      （子胆、丑肝、寅肺、卯大肠、辰胃、巳脾、午心、未小肠、申膀胱、酉肾、戌心包、亥三焦）。
+      两法结论有时不同，本盘两说并列，供对照。
+    </p>
+
+    <h3 class="about-h">六、时辰为准</h3>
+    <p class="about-text">
+      紫微斗数以时辰定命宫，一时辰之差，全盘皆变。
+      故以出生地经度与均时差校正为真太阳时，1986 至 1991 年间出生者另减去夏令时一小时。
+      二十三时后生人，属次日之子时，排盘以次日论。
+    </p>
+
+    <h3 class="about-h">七、闰月与换年</h3>
+    <p class="about-text">
+      换年取正月初一，不取立春，此为主流派通行口径。
+      闰月生人，以月之中界分属前后两月，取其中气所在而定。
+    </p>
+
+    <p class="about-foot">大小王 · 紫微斗数</p>
+  </section>
+
+</main>
+
+
+
+<!-- 弹层：格局详情 -->
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-mask" data-close></div>
+  <div class="sheet-body" role="dialog" aria-modal="true">
+    <button class="sheet-close" data-close aria-label="关闭">×</button>
+    <div id="sheet-content"></div>
+  </div>
+</div>
+
+
+<!-- 滚轮选择面板 -->
+<div class="wheel-sheet" id="wheel-sheet" hidden>
+  <div class="wheel-mask" data-wclose></div>
+  <div class="wheel-panel">
+    <div class="wheel-top">
+      <button type="button" class="wheel-cancel" data-wclose>取消</button>
+      <span class="wheel-title" id="wheel-title">选择</span>
+      <button type="button" class="wheel-ok" id="wheel-ok">确定</button>
+    </div>
+    <div class="wheel-body">
+      <div class="wheel-band" aria-hidden="true"></div>
+      <div class="wheels" id="wheels"></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=mvchuzk9"></script>
+</body>
+</html>
