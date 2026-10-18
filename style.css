@@ -1684,28 +1684,30 @@ input[type="time"].input { font-size: 15px; }
 
 .full-load {
   appearance: none;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
   padding: 16px 20px;
-  border: 1px dashed var(--line-strong);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--soft);
+  background: #fff;
   color: var(--ink);
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-  transition: none;
   -webkit-tap-highlight-color: transparent;
 }
-.full-load small {
-  display: block;
-  font-weight: 400;
+.full-load-arrow {
   font-size: 12px;
   color: var(--muted);
-  margin-top: 4px;
+  transition: transform .18s ease;
 }
-.full-load:active { background: #eceef1; }
+.full-load.is-open .full-load-arrow { transform: rotate(180deg); }
+.full-load.is-open { background: var(--soft); }
+.full-load:active { background: var(--soft); }
 .full-load:disabled { color: var(--muted); cursor: default; }
 
 .full-card {
