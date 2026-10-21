@@ -1942,6 +1942,22 @@ input[type="time"].input { font-size: 15px; }
   font-size: 12.5px;
 }
 
+/* 下载按钮：一个词，居中，无下划线 */
+.pdf-dl {
+  display: block;
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 11px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.pdf-dl:active { background: #262b33; }
+
 </style>
 </head>
 <body>
@@ -2426,12 +2442,8 @@ ${C}
       </div>
       <p class="pdf-hint">${x0(e.filename)}</p>
 
-      <a class="pdf-opt pdf-save" href="${e.url}" download="${x0(e.filename)}">
-        <span class="pdf-opt-title">\u4E0B\u8F7D\u5230\u672C\u673A</span>
-        <span class="pdf-opt-desc">\u76F4\u63A5\u5B58\u8FDB\u300C\u6587\u4EF6\u300DApp \u7684\u4E0B\u8F7D\u76EE\u5F55\uFF0C\u53EA\u751F\u6210\u4E00\u4E2A PDF</span>
-      </a>
+      <a class="pdf-dl" href="${e.url}" download="${x0(e.filename)}">\u4E0B\u8F7D</a>
 
-      <p class="pdf-tip">\u751F\u6210\u5B8C\u6210\u524D\u4E0D\u8981\u5173\u95ED\u9875\u9762\uFF0C\u6587\u4EF6\u6682\u65F6\u4FDD\u5B58\u5728\u5185\u5B58\u91CC\u3002</p>
     </div>`,document.body.appendChild(n);let t=()=>n.remove();n.querySelectorAll("[data-sclose]").forEach(i=>i.addEventListener("click",t))}async function gE(){let e=`${nA.birthInfo.year}-${String(nA.birthInfo.month).padStart(2,"0")}-${String(nA.birthInfo.day).padStart(2,"0")}`,A=await fetch(`${m4}${e}.json.zst`);if(!A.ok)throw new Error("\u8BE5\u65E5\u671F\u6682\u65E0\u539F\u6587\u6570\u636E");let n=new Uint8Array(await A.arrayBuffer()),t=new TextDecoder("utf-8").decode(Zu(n)),u=JSON.parse(t).find(g=>g.h===nA.birthInfo.hour&&g.g===nA.birthInfo.gender);if(!u)throw new Error("\u672A\u627E\u5230\u5BF9\u5E94\u65F6\u8FB0\u4E0E\u6027\u522B\u7684\u6570\u636E");X1=u.c}m0("#btn-new").addEventListener("click",v4);m0("#btn-reset").addEventListener("click",v4);function v4(){m0("#result").hidden=!0,m0("#form-section").hidden=!1,m0("#btn-reset").hidden=!0,window.scrollTo({top:0,behavior:"smooth"})}document.querySelectorAll(".nav-link").forEach(e=>{e.addEventListener("click",()=>{let A=e.dataset.scroll;document.getElementById(A==="app"?"form-section":"about")?.scrollIntoView({behavior:"smooth",block:"start"}),document.querySelectorAll(".nav-link").forEach(n=>n.classList.toggle("is-active",n===e))})});var hE=new Date,lE=Math.min(Math.max(hE.getFullYear()-30,1900),2050);yA={year:lE,month:6,day:15,isLeap:!1};qu();x4();C4();$6();document.querySelectorAll(".cal-tab").forEach(e=>{e.addEventListener("click",()=>PC(e.dataset.cal))});m0("#pick-year").addEventListener("click",Wu);m0("#pick-month").addEventListener("click",Wu);m0("#pick-day").addEventListener("click",Wu);m0("#pick-hour").addEventListener("click",kC);m0("#pick-city").addEventListener("click",OC);m0("#btn-exact").addEventListener("click",()=>{let e=m0("#birth-time"),A=!e.hidden;if(e.hidden=A,m0("#btn-exact").textContent=A?"\u6309\u6574\u70B9\u65F6\u8FB0\u5373\u53EF":"\u4E0D\u77E5\u9053\u5177\u4F53\u65F6\u95F4\uFF1F\u6309\u65F6\u8FB0\u9009\u5373\u53EF \xB7 \u7CBE\u786E\u5230\u5206",!A){let n=Uu[ht]??0;e.value=`${String(n).padStart(2,"0")}:00`}});var Ju=ie.findIndex(e=>e.name.includes("\u5317\u4EAC"));if(Ju>=0){_n=Ju;let e=ie[Ju].cities.findIndex(A=>A.name==="\u5317\u4EAC");gt=e>=0?e:0}f4();})();
 
 </script>
