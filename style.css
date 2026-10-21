@@ -1868,3 +1868,13 @@ input[type="time"].input { font-size: 15px; }
 }
 .pdf-opt.is-disabled .pdf-opt-title { color: var(--muted-2); }
 .pdf-opt.is-disabled .pdf-opt-desc { color: var(--muted-2); }
+
+/* 保存 PDF 面板 */
+.pdf-save { text-decoration: none; display: block; }
+.pdf-tip {
+  margin: 14px 0 0;
+  font-size: 11.5px;
+  color: var(--muted-2);
+  line-height: 1.6;
+  text-align: center;
+}
