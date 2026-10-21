@@ -10,7 +10,7 @@
 <meta property="og:title" content="大小王 · 紫微斗数排盘">
 <meta property="og:description" content="紫微斗数排盘。按《紫微斗数全书》校订星曜庙旺，含真太阳时校正、生年四化、大限流年与格局断法。">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="style.css?v=mvhzuil4">
+<link rel="stylesheet" href="style.css?v=mvi0400g">
 </head>
 <body>
 
@@ -59,7 +59,7 @@
         <label class="label">出生时辰<span class="label-note">北京时间</span></label>
         <button type="button" class="pick pick-wide" id="pick-hour" aria-label="选时辰"></button>
         <button type="button" class="link-btn" id="btn-exact">不知道具体时间？按时辰选即可 · 精确到分</button>
-        <input class="input" type="time" id="birth-time" value="08:00" hidden>
+        <button type="button" class="pick pick-wide" id="pick-time" hidden aria-label="选时间"></button>
       </div>
 
       <div class="field">
@@ -84,17 +84,16 @@
       <div class="field field-wide">
         <button type="button" class="adv-head" id="adv-head">
           <span>高级输入</span>
-          <span class="adv-sub">已知准确真太阳时可用</span>
+          <span class="adv-sub">已知真太阳时</span>
           <span class="adv-arrow" aria-hidden="true"></span>
         </button>
         <div class="adv-box" id="adv-box" hidden>
           <label class="adv-check">
             <input type="checkbox" id="use-solar">
-            <span>直接指定真太阳时（上方时辰与地点不再参与计算）</span>
+            <span>直接指定真太阳时</span>
           </label>
           <div class="adv-input" id="adv-input" hidden>
-            <input class="input" type="time" id="solar-time" value="05:00">
-            <p class="adv-note">系统按此时间直接定时辰，不做经度与均时差校正。</p>
+            <button type="button" class="pick pick-wide" id="pick-solar" aria-label="选真太阳时"></button>
           </div>
         </div>
       </div>
@@ -253,6 +252,6 @@
   </div>
 </div>
 
-<script src="app.js?v=mvhzuil4"></script>
+<script src="app.js?v=mvi0400g"></script>
 </body>
 </html>
