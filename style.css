@@ -1928,3 +1928,19 @@ input[type="time"].input { font-size: 15px; }
   color: var(--accent);
   font-size: 12.5px;
 }
+
+/* 下载按钮：一个词，居中，无下划线 */
+.pdf-dl {
+  display: block;
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 11px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.pdf-dl:active { background: #262b33; }
