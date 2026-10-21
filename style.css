@@ -1968,61 +1968,41 @@ input[type="time"].input { font-size: 15px; }
 .exact-mode { width: auto; align-self: flex-start; }
 .exact-mode .seg { padding: 5px 16px; font-size: 13px; }
 
-/* 高级输入（用原生 details，不依赖 JS） */
+/* 高级输入：用 display 直接切换，不用 details，绕开 Safari 18 的折叠 bug */
 .adv {
   border-top: 1px solid var(--line);
   margin-top: 4px;
+  padding-top: 12px;
 }
-/* 关键：summary 不能用 flex。
-   Safari 上 summary 设成 flex 会破坏 <details> 的原生展开，
-   表现为「箭头转了但内容不出来」。这里用 list-item 保持原生，
-   flex 布局交给里层的 .adv-row。 */
 .adv-head {
-  display: list-item;
-  padding: 14px 2px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 550;
-  color: var(--ink-2);
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  position: relative;
-  list-style: none;
-}
-
-.adv-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-right: 20px;
+  padding: 4px 0 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
-/* 去掉 Safari / Chrome 的默认三角 */
-.adv-head::-webkit-details-marker { display: none; }
-.adv-head::marker { content: ""; }
+.adv-head > span:first-child {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.adv-sub { font-size: 12px; color: var(--muted-2); }
 
-.adv-head::after {
-  content: "";
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  margin-top: -2px;
+.adv-arrow {
+  margin-left: auto;
   width: 0;
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 5px solid var(--muted-2);
-  transition: transform .18s ease;
+  flex: none;
 }
-.adv[open] .adv-head::after { transform: rotate(180deg); }
+.adv-head[aria-expanded="true"] .adv-arrow { transform: rotate(180deg); }
 
-.adv-sub { font-size: 12px; color: var(--muted-2); font-weight: 400; }
-
-.adv-box {
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--soft);
-}
 .adv-check {
   display: flex;
   align-items: flex-start;
