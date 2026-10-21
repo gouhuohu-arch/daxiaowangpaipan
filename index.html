@@ -10,7 +10,7 @@
 <meta property="og:title" content="大小王 · 紫微斗数排盘">
 <meta property="og:description" content="紫微斗数排盘。按《紫微斗数全书》校订星曜庙旺，含真太阳时校正、生年四化、大限流年与格局断法。">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="style.css?v=mvhzofmr">
+<link rel="stylesheet" href="style.css?v=mvhzuil4">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
       </div>
 
       <div class="field">
-        <label class="label">出生时辰<span class="label-note">当地钟表</span></label>
+        <label class="label">出生时辰<span class="label-note">北京时间</span></label>
         <button type="button" class="pick pick-wide" id="pick-hour" aria-label="选时辰"></button>
         <button type="button" class="link-btn" id="btn-exact">不知道具体时间？按时辰选即可 · 精确到分</button>
         <input class="input" type="time" id="birth-time" value="08:00" hidden>
@@ -82,11 +82,11 @@
 
 
       <div class="field field-wide">
-        <div class="adv-head" id="adv-head">
+        <button type="button" class="adv-head" id="adv-head">
           <span>高级输入</span>
           <span class="adv-sub">已知准确真太阳时可用</span>
-          <span class="adv-arrow">▾</span>
-        </div>
+          <span class="adv-arrow" aria-hidden="true"></span>
+        </button>
         <div class="adv-box" id="adv-box" hidden>
           <label class="adv-check">
             <input type="checkbox" id="use-solar">
@@ -253,6 +253,6 @@
   </div>
 </div>
 
-<script src="app.js?v=mvhzofmr"></script>
+<script src="app.js?v=mvhzuil4"></script>
 </body>
 </html>
