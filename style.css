@@ -1973,18 +1973,28 @@ input[type="time"].input { font-size: 15px; }
   border-top: 1px solid var(--line);
   margin-top: 4px;
 }
+/* 关键：summary 不能用 flex。
+   Safari 上 summary 设成 flex 会破坏 <details> 的原生展开，
+   表现为「箭头转了但内容不出来」。这里用 list-item 保持原生，
+   flex 布局交给里层的 .adv-row。 */
 .adv-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: list-item;
   padding: 14px 2px;
   cursor: pointer;
   font-size: 13px;
   font-weight: 550;
   color: var(--ink-2);
-  list-style: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  position: relative;
+  list-style: none;
+}
+
+.adv-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 20px;
 }
 /* 去掉 Safari / Chrome 的默认三角 */
 .adv-head::-webkit-details-marker { display: none; }
@@ -1992,14 +2002,16 @@ input[type="time"].input { font-size: 15px; }
 
 .adv-head::after {
   content: "";
-  margin-left: auto;
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  margin-top: -2px;
   width: 0;
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 5px solid var(--muted-2);
   transition: transform .18s ease;
-  flex: none;
 }
 .adv[open] .adv-head::after { transform: rotate(180deg); }
 
