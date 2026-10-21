@@ -10,7 +10,7 @@
 <meta property="og:title" content="大小王 · 紫微斗数排盘">
 <meta property="og:description" content="紫微斗数排盘。按《紫微斗数全书》校订星曜庙旺，含真太阳时校正、生年四化、大限流年与格局断法。">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="style.css?v=mvhv32oe">
+<link rel="stylesheet" href="style.css?v=mvhyptdm">
 </head>
 <body>
 
@@ -78,6 +78,15 @@
       <div class="field field-wide">
         <label class="label">出生地<span class="label-note">用于真太阳时校正</span></label>
         <button type="button" class="pick" id="pick-city" aria-label="选出生地"></button>
+      </div>
+
+      <div class="field field-wide">
+        <label class="label">时间口径<span class="label-note">懂命理的可直接填真太阳时</span></label>
+        <div class="segmented time-mode" role="radiogroup" aria-label="时间口径">
+          <button type="button" class="seg is-active" data-tmode="clock" role="radio" aria-checked="true">钟表时间</button>
+          <button type="button" class="seg" data-tmode="solar" role="radio" aria-checked="false">真太阳时</button>
+        </div>
+        <p class="tm-hint" id="tm-hint"></p>
       </div>
 
       <div class="form-actions">
@@ -234,6 +243,6 @@
   </div>
 </div>
 
-<script src="app.js?v=mvhv32oe"></script>
+<script src="app.js?v=mvhyptdm"></script>
 </body>
 </html>
