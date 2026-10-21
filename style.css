@@ -1878,3 +1878,53 @@ input[type="time"].input { font-size: 15px; }
   line-height: 1.6;
   text-align: center;
 }
+
+/* PDF 生成进度层 */
+.prog-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 17, 21, .34);
+  padding: 24px;
+}
+.prog-card {
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 16px 44px rgba(15, 17, 21, .22);
+  text-align: center;
+}
+.prog-label {
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--ink);
+  margin-bottom: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.prog-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #eef0f3;
+  overflow: hidden;
+}
+.prog-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--sel);
+  transition: width .2s ease;
+}
+.prog-note {
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: var(--muted-2);
+  line-height: 1.6;
+}
+.prog-note.is-error {
+  color: var(--accent);
+  font-size: 12.5px;
+}
