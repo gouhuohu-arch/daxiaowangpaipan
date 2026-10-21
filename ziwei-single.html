@@ -1984,12 +1984,17 @@ input[type="time"].input { font-size: 15px; }
 /* 高级输入 */
 .adv-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
-  padding: 10px 2px;
-  cursor: pointer;
-  border-top: 1px solid var(--line);
+  width: 100%;
+  padding: 14px 2px;
   margin-top: 4px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 .adv-head > span:first-child {
@@ -2000,9 +2005,13 @@ input[type="time"].input { font-size: 15px; }
 .adv-sub { font-size: 12px; color: var(--muted-2); }
 .adv-arrow {
   margin-left: auto;
-  font-size: 11px;
-  color: var(--muted-2);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--muted-2);
   transition: transform .18s ease;
+  flex: none;
 }
 .adv-head.is-open .adv-arrow { transform: rotate(180deg); }
 
@@ -2088,7 +2097,7 @@ input[type="time"].input { font-size: 15px; }
       </div>
 
       <div class="field">
-        <label class="label">出生时辰<span class="label-note">当地钟表</span></label>
+        <label class="label">出生时辰<span class="label-note">北京时间</span></label>
         <button type="button" class="pick pick-wide" id="pick-hour" aria-label="选时辰"></button>
         <button type="button" class="link-btn" id="btn-exact">不知道具体时间？按时辰选即可 · 精确到分</button>
         <input class="input" type="time" id="birth-time" value="08:00" hidden>
@@ -2114,11 +2123,11 @@ input[type="time"].input { font-size: 15px; }
 
 
       <div class="field field-wide">
-        <div class="adv-head" id="adv-head">
+        <button type="button" class="adv-head" id="adv-head">
           <span>高级输入</span>
           <span class="adv-sub">已知准确真太阳时可用</span>
-          <span class="adv-arrow">▾</span>
-        </div>
+          <span class="adv-arrow" aria-hidden="true"></span>
+        </button>
         <div class="adv-box" id="adv-box" hidden>
           <label class="adv-check">
             <input type="checkbox" id="use-solar">
