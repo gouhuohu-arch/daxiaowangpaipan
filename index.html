@@ -10,7 +10,7 @@
 <meta property="og:title" content="大小王 · 紫微斗数排盘">
 <meta property="og:description" content="紫微斗数排盘。按《紫微斗数全书》校订星曜庙旺，含真太阳时校正、生年四化、大限流年与格局断法。">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="style.css?v=mvi0sa0v">
+<link rel="stylesheet" href="style.css?v=mvi1j07z">
 </head>
 <body>
 
@@ -81,20 +81,21 @@
 
 
       <div class="field field-wide">
-        <button type="button" class="adv-head" id="adv-head">
-          <span>高级输入</span>
-          <span class="adv-sub">已知真太阳时</span>
-          <span class="adv-arrow" aria-hidden="true"></span>
-        </button>
-        <div class="adv-box" id="adv-box" hidden>
-          <label class="adv-check">
-            <input type="checkbox" id="use-solar">
-            <span>直接指定真太阳时</span>
-          </label>
-          <div class="adv-input" id="adv-input" hidden>
-            <button type="button" class="pick pick-wide" id="pick-solar" aria-label="选真太阳时"></button>
+        <details class="adv">
+          <summary class="adv-head">
+            <span>高级输入</span>
+            <span class="adv-sub">已知真太阳时</span>
+          </summary>
+          <div class="adv-box">
+            <label class="adv-check">
+              <input type="checkbox" id="use-solar">
+              <span>直接指定真太阳时</span>
+            </label>
+            <div class="adv-input" id="adv-input" hidden>
+              <button type="button" class="pick pick-wide" id="pick-solar" aria-label="选真太阳时"></button>
+            </div>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="form-actions">
@@ -251,6 +252,6 @@
   </div>
 </div>
 
-<script src="app.js?v=mvi0sa0v"></script>
+<script src="app.js?v=mvi1j07z"></script>
 </body>
 </html>
