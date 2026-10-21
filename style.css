@@ -1968,40 +1968,13 @@ input[type="time"].input { font-size: 15px; }
 .exact-mode { width: auto; align-self: flex-start; }
 .exact-mode .seg { padding: 5px 16px; font-size: 13px; }
 
-/* 高级输入：用 display 直接切换，不用 details，绕开 Safari 18 的折叠 bug */
+/* 高级输入：不折叠，直接显示 */
 .adv {
   border-top: 1px solid var(--line);
-  margin-top: 4px;
-  padding-top: 12px;
+  margin-top: 6px;
+  padding-top: 14px;
+  gap: 10px;
 }
-.adv-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0 10px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.adv-head > span:first-child {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink-2);
-}
-.adv-sub { font-size: 12px; color: var(--muted-2); }
-
-.adv-arrow {
-  margin-left: auto;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 5px solid var(--muted-2);
-  flex: none;
-}
-.adv-head[aria-expanded="true"] .adv-arrow { transform: rotate(180deg); }
 
 .adv-check {
   display: flex;
