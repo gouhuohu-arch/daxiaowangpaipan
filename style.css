@@ -1944,3 +1944,12 @@ input[type="time"].input { font-size: 15px; }
   -webkit-tap-highlight-color: transparent;
 }
 .pdf-dl:active { background: #262b33; }
+
+/* 时间口径提示 */
+.tm-hint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted-2);
+  line-height: 1.6;
+}
+.time-mode { width: auto; }
