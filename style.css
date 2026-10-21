@@ -1968,35 +1968,30 @@ input[type="time"].input { font-size: 15px; }
 .exact-mode { width: auto; align-self: flex-start; }
 .exact-mode .seg { padding: 5px 16px; font-size: 13px; }
 
-/* 高级输入 */
+/* 高级输入（用原生 details，不依赖 JS） */
+.adv {
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+}
 .adv-head {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 100%;
   padding: 14px 2px;
-  margin-top: 4px;
-  border: 0;
-  border-top: 1px solid var(--line);
-  background: transparent;
-  font-family: inherit;
-  text-align: left;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  /* iOS Safari 需要显式声明，否则 cursor:pointer 的元素可能不派发 click */
-  -webkit-appearance: none;
-  appearance: none;
-  position: relative;
-  z-index: 1;
-  touch-action: manipulation;
-}
-.adv-head > span:first-child {
   font-size: 13px;
   font-weight: 550;
   color: var(--ink-2);
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.adv-sub { font-size: 12px; color: var(--muted-2); }
-.adv-arrow {
+/* 去掉 Safari / Chrome 的默认三角 */
+.adv-head::-webkit-details-marker { display: none; }
+.adv-head::marker { content: ""; }
+
+.adv-head::after {
+  content: "";
   margin-left: auto;
   width: 0;
   height: 0;
@@ -2006,7 +2001,9 @@ input[type="time"].input { font-size: 15px; }
   transition: transform .18s ease;
   flex: none;
 }
-.adv-head.is-open .adv-arrow { transform: rotate(180deg); }
+.adv[open] .adv-head::after { transform: rotate(180deg); }
+
+.adv-sub { font-size: 12px; color: var(--muted-2); font-weight: 400; }
 
 .adv-box {
   padding: 12px 14px;
